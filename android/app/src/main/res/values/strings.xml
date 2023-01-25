@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">QR Code Scanner</string>
+    <string name="title_activity_main">QR_SCaNNER</string>
+    <string name="package_name">com.QR_Scanner.app</string>
+    <string name="custom_url_scheme">com.QR_Scanner.app</string>
+</resources>
