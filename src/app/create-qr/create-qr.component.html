@@ -1,0 +1,44 @@
+<!-- Create QR code page -->
+<div class="d-flex align-items-center m-0 bg p-3 justify-content-center sticky-top">
+    <div class="d-flex col-4 pt-2" *ngIf="isCreated">
+        <i class="bi bi-caret-left-fill " (click)="backToCreate()"></i>
+        <!-- <i class="bi bi-caret-left-fill " (click)="backToScan()" *ngIf="!isCreated"></i> -->
+    </div>
+    <h1 class="d-flex mb-0 justify-content-between">{{isCreated ? 'Created Code' : 'Create QR Code'}}</h1>
+</div>
+<div *ngIf="!isCreated">
+    <form #form="ngForm" (ngSubmit)="submitForm(form.value)">
+        <label class="col p-3">Enter your text</label>
+        <div class="w-100 m-auto p-4 ">
+        <textarea class="h5 w-100 box-shadow" rows="10" name="qrCode" #qrCode="ngModel" [ngModel]="qrInfo" required></textarea>
+    </div>
+        <span *ngIf="qrCode.invalid && (qrCode.touched || qrCode.dirty || form.submitted)" class="text-danger">Enter your text to create QR</span>
+        <div class="d-flex justify-content-center p-3 ">
+            <button type="submit" class="btn btn-success ">Generate</button>
+        </div>
+    </form>
+</div>
+
+<!-- Show created QR code page -->
+<div *ngIf="isCreated">
+    <div class="d-flex justify-content-center pt-5 x">
+        <qr-code #qrcode  mime="image/png" [value]="generateQR.qrCode" [size]="size" [foreground]="color" [canvas]=true></qr-code>
+    </div>
+
+    <h4 class="col p-5 d-flex justify-content-center text-align-center">Search text</h4>
+    <div class="col d-flex justify-content-center pt-3">
+        <div class="grid-container">
+            <div class="grid-item none" (click)="qrColor('black')"><i class="bi bi-slash-circle-fill"></i></div>
+            <div class="grid-item grid1" (click)="qrColor('DarkSlateBlue')"></div>
+            <div class="grid-item grid2" (click)="qrColor('DarkCyan')"></div>
+            <div class="grid-item grid3" (click)="qrColor('Maroon')"></div>
+            <div class="grid-item grid4" (click)="qrColor('darkorange')"></div>
+            <div class="grid-item grid5" (click)="qrColor('MidnightBlue')"></div>
+            <div class="grid-item grid6" (click)="qrColor('mediumvioletred')"></div>
+
+
+
+        </div>
+    </div>
+    <h3 class="ml-2 pt-5">Text : {{generateQR.qrCode}}</h3>
+</div>

@@ -1,0 +1,43 @@
+<div>
+  <div class="d-flex justify-content-center  m-0 bg ">
+    <!-- <div class="col pt-2">
+      <i class="bi bi-caret-left-fill " (click)="backToScanner()"></i>
+    </div> -->
+    <div class=" d-flex m-0 bg p-3 ">
+      <h1 class="m-0 ">HW2P</h1>
+    </div>
+    
+  </div>
+  <div *ngIf="history.length">
+    <table class="table table-borderless">
+      <thead>
+        <tr class="d-flex justify-content-between">
+          <th scope="col" class="border-0">#</th>
+          <th scope="col" class="border-0">Record</th>
+          <th class="border-0"><button (click)="clearAllRecord()" class="btn btn-outline-danger">Clear All</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of history; let i=index" class="d-flex justify-content-between  w-10">
+          <td>{{i+1}}</td>
+
+          <td *ngIf="!item.isLink; else isLinkAndNavigate" class="d-flex flex-column">
+            <span class="col">{{item.result}}</span>
+            <span class="col">{{item.date | date : 'short'}}</span>
+          </td>
+          <td></td>
+          <ng-template #isLinkAndNavigate  >
+            <div class="d-flex flex-column">
+            <a class="col" href={{item.result}}>{{item.result}}</a>
+            <span class="col">{{item.date | date : 'short'}}</span>
+            </div>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-center mt-5">
+    <p *ngIf="!history.length">There's no record found</p>
+  </div>
+</div>
+

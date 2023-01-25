@@ -1,0 +1,224 @@
+
+.scan-wrapper{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+  
+    .ion-no-padding{
+      position: absolute;
+      right: 0;
+  
+      button:focus{
+        background-color: orangered;
+      }
+    }
+    .torch{
+      background-color: #FFC300;
+      color: #900C3F;
+      position: absolute !important;
+      left: 10px !important;
+      top: 10px !important;
+      i{
+        font-size: 20px;
+      }
+    }
+  }
+  
+  .scan-message{
+    position: absolute;
+    z-index: 99;
+    bottom: 5px;
+    left: calc(50% - 160px);
+    color: #fff;
+    text-align: center;
+  }
+  
+  .stop-scanner{
+    background-color: #C70039;
+    color: #fff;
+    position: absolute !important;
+    right: 8px !important;
+    top: 10px !important;
+  }
+.bodyColor{
+  background-color: #fff;
+}
+.bg{
+  background-color: #3C5E95 ;
+  h1{
+    color: white;
+  }
+  i{
+    color: #fff;
+  }
+}
+.bh{
+  background-color: #ffd54d;
+  a{
+    color: #fff;
+  }
+  i{
+    color: #fff;
+  }
+}
+
+.pt{
+  padding-top: end;
+}
+
+.result {
+    padding-top: 30px;
+    text-align: center;
+    h1{
+        color: yellowgreen;
+    }
+    h3{
+      text-align: center;
+    }
+}
+
+//   button design
+
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 70px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 70px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 70px;
+}
+
+
+
+
+
+
+
+
+
+// box animation design
+
+
+.box {
+  width: 70vw;
+  height: 60vw;
+  max-height: 75vh;
+  max-width: 75vh;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border: 0.1rem  rgba(	255, 195, 0);
+  box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.5);
+
+}
+
+ .line {
+  height: calc(100% - 2px);
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0, 255, 51, 0) 80%, #FFC300 211%);
+  border-bottom: 2px solid #FFC300;
+  transform: translateY(-100%);
+  animation: radar-beam 3s infinite;
+  animation-timing-function: cubic-bezier(0.53, 0, 0.43, 0.99);
+  animation-delay: 1.4s;
+}
+
+ .box:after,
+ .box:before,
+ .angle:after,
+ .angle:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 4vw;
+  height: 4vw;
+  border: 0.2rem solid transparent;
+}
+ .box:after,
+ .box:before {
+  top: 0;
+  border-top-color: #FFC300;
+}
+ .angle:after,
+ .angle:before {
+  bottom: 0;
+  border-bottom-color: #FFC300;
+}
+ .box:before,
+ .angle:before {
+  left: 0;
+  border-left-color: #FFC300;
+}
+ .box:after,
+ .angle:after {
+  right: 0;
+  border-right-color: #FFC300;
+}
+@keyframes radar-beam {
+  0% {
+      transform: translateY(-100%);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}

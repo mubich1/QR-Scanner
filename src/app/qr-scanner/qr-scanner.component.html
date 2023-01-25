@@ -1,0 +1,42 @@
+<!-- Scanner Button to open scanner -->
+
+
+<div [hidden]="scanActive" class="body bodyColor vh-100">
+    <div class="d-flex align-items-center m-0 bg p-3 justify-content-center sticky">
+        <h1 class="m-0">QR Scanner</h1><i class="bi bi-qr-code pl-3" style="font-size:20px;"></i>
+    </div>
+    <div class="d-flex container pt-5 justify-content-center">
+        <button class="button-85 size " (click)="startScan()" role="button"><i class="bi bi-qr-code-scan" style="font-size:56px;"></i><span class="d-flex col sm">SCAN</span></button>
+    </div>
+    <div class="result" *ngIf="result">
+        <h1>Result</h1>
+        <div *ngIf="!result.isLink; else isLinkAndNavigate" class="d-flex flex-column">
+        <h3 class="col">{{result.result}}</h3>
+        <h5 class="col">{{result.date | date : 'shortTime'}}</h5>
+    </div>
+        <ng-template #isLinkAndNavigate  >
+            <div class="d-flex ">
+            <a class="col" href={{result.result}}>{{result.result}}</a>
+            <span class="col">{{result.date | date : 'short'}}</span>
+            </div>
+          </ng-template>
+
+    </div>
+
+</div>
+
+    <!-- this will show when scanner camera will open  -->
+    <div class="scan-wrapper" [hidden]="!scanActive">
+        <div class="box">
+            <div class="line"></div>
+            <div class="angle"></div>
+        </div>
+        <button type="button" class="torch btn btn-sm border-0" (click)="scannerTorch()">
+            <i class="bi bi-lightning-charge bi-lg" *ngIf="!torch"></i>
+            <i class="bi bi-lightning-charge-fill" *ngIf="torch"></i>
+        </button>
+        <button type="button" class="btn btn  stop-scanner" (click)="stopScanner()">
+            <i class="bi bi-x-lg border-0"></i></button>
+        <p class="scan-message">Place a QR code\Bar code inside the scan area</p>
+    </div>
+
